@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import pl.test.pages.BasePage;
 import pl.test.pages.DynamicLoadingPage;
 
+import java.time.Duration;
+
 import static pl.test.pages.DynamicLoadingPage.EXPECTED_CONFIRMATION_TEXT;
 
 public class DynamicLoadingPageTests extends BaseTest {
@@ -23,17 +25,20 @@ public class DynamicLoadingPageTests extends BaseTest {
     public void checkConfirmationText() {
         dynamicLoadingPage.clickStartButton();
 
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loading")));
 
         Assert.assertTrue(dynamicLoadingPage.barVisible());
 
-        WebDriverWait wait2 = new WebDriverWait(driver, 20);
+        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait2.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
 
         Assert.assertFalse(dynamicLoadingPage.barNotVisible());
 
-        String actualConfirmationText = dynamicLoadingPage.finishLoadingConfirmation();
+        String actualConfirmationText = dynamicLoadingPage
+                .clickStartButton()
+                .finishLoadingConfirmation();
+
         Assert.assertEquals(actualConfirmationText, EXPECTED_CONFIRMATION_TEXT);
     }
 

@@ -1,14 +1,7 @@
-
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pl.test.pages.DynamicLoadingPage;
 import pl.test.pages.LoadingPage;
-import static pl.test.pages.LoadingPage.CORRECT_USER_NAME;
-import static pl.test.pages.LoadingPage.CORRECT_USER_PASSWORD;
-import static pl.test.pages.LoadingPage.INCORRECT_USER_NAME;
-import static pl.test.pages.LoadingPage.INCORRECT_USER_PASSWORD;
 
 public class LoadingPageTest extends BaseTest{
     LoadingPage loadingPage;
@@ -40,7 +33,6 @@ public class LoadingPageTest extends BaseTest{
         //Assert.assertEquals(loadingPage.getFailMessage(), LoadingPage.FAIL_MESSAGE_INCORRECT_NAME);
 
         Assert.assertTrue(loadingPage.failMessageShown());
-
     }
 
     @Test

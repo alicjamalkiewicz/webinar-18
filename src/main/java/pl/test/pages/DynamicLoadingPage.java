@@ -22,8 +22,9 @@ public class DynamicLoadingPage extends BasePage {
     private WebElement finishTextHeader;
 
 
-    public void clickStartButton() {
+    public DynamicLoadingPage clickStartButton() {
         startButton.click();
+        return this;
     }
 
     public String finishLoadingConfirmation() {
