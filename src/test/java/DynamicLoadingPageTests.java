@@ -35,12 +35,22 @@ public class DynamicLoadingPageTests extends BaseTest {
 
         Assert.assertFalse(dynamicLoadingPage.barNotVisible());
 
-        String actualConfirmationText = dynamicLoadingPage
-                .clickStartButton()
-                .finishLoadingConfirmation();
+        String actualConfirmationText = dynamicLoadingPage.finishLoadingConfirmation();
 
         Assert.assertEquals(actualConfirmationText, EXPECTED_CONFIRMATION_TEXT);
     }
+
+//    @Test
+//    public void checkConfirmationText() {
+//        dynamicLoadingPage.clickStartButton();
+//
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("finish")));
+//
+//        String actualConfirmationText = dynamicLoadingPage.finishLoadingConfirmation();
+//
+//        Assert.assertEquals(actualConfirmationText, EXPECTED_CONFIRMATION_TEXT);
+//    }
 
 }
 
